@@ -244,8 +244,8 @@ public class MarkdownRender implements Render {
       return "";
     }
     StringBuilder sb = new StringBuilder("\n");
-    sb.append(listContent(prefix, "New content type", changedContent.getIncreased()));
-    sb.append(listContent(prefix, "Deleted content type", changedContent.getMissing()));
+    sb.append(listContent(prefix, "New body of type", changedContent.getIncreased()));
+    sb.append(listContent(prefix, "Deleted body of type", changedContent.getMissing()));
     final int deepness;
     if (StringUtils.isNotBlank(prefix)) {
       deepness = 1;
@@ -279,7 +279,7 @@ public class MarkdownRender implements Render {
   }
 
   protected String itemContent(int deepness, String mediaType, ChangedMediaType content) {
-    String result = itemContent("Changed content type", mediaType);
+    String result = itemContent("Changed body of type", mediaType);
     if (content.getSchema() != null) {
       result += schema(deepness, content.getSchema());
     }
