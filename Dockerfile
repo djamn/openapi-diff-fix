@@ -1,6 +1,11 @@
 FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /build
 COPY ./ /build
+
+RUN apk add --no-cache dos2unix && \
+    dos2unix mvnw && \
+    chmod +x mvnw \
+
 RUN ./mvnw -V -B -ff -P docker package -q
 
 FROM eclipse-temurin:21-jre-alpine
